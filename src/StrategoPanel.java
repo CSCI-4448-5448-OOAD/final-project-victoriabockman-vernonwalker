@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class StrategoPanel extends JPanel {
 
-    private static final int BOARD_SIZE = 10;
+    public static final int BOARD_SIZE = 10;
     private StrategoBoard strategoBoard;
 
     public StrategoPanel() {
@@ -22,8 +22,9 @@ public class StrategoPanel extends JPanel {
     private void initializeBoard() {
         // Load board and piece images
        // BufferedImage boardImage = loadImage("C:\\\\Users\\bockm\\Pictures\\Stratego\\board.png");
-        BufferedImage bombImage = loadImage("C:\\Users\\bockm\\Desktop\\OOAD (4448)\\Test - Java\\Stratego\\bomb.png");
-        BufferedImage spyImage = loadImage("C:\\Users\\bockm\\Desktop\\OOAD (4448)\\Test - Java\\Stratego\\spy.png");
+
+        Image bombImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/bomb.png");
+        Image spyImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/spy.png");
 
         System.out.println("loaded");
 
@@ -35,7 +36,7 @@ public class StrategoPanel extends JPanel {
 
         // Create the Stratego board
        // strategoBoard = new StrategoBoard(boardImage, initialPieces);
-          strategoBoard = new StrategoBoard(initialPieces);
+          strategoBoard = new StrategoBoard(initialPieces, this);
     }
 
     public Dimension getPreferredSize() {

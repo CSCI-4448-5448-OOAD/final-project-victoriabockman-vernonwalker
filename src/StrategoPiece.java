@@ -1,11 +1,11 @@
-import java.awt.image.BufferedImage;
+import java.awt.*;
 
 public class StrategoPiece {
     private int rank;
     private int x, y; // position on the board
-    private BufferedImage image;
+    private Image image;
 
-    public StrategoPiece(int rank, int x, int y, BufferedImage image) {
+    public StrategoPiece(int rank, int x, int y, Image image) {
         this.rank = rank;
         this.x = x;
         this.y = y;
@@ -24,7 +24,7 @@ public class StrategoPiece {
         return y;
     }
 
-    public BufferedImage getImage() {
+    public Image getImage() {
         return image;
     }
 }

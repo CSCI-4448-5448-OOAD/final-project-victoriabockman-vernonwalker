@@ -4,11 +4,13 @@ import java.awt.image.BufferedImage;
 public class StrategoBoard {
    // private BufferedImage boardImage;
     private StrategoPiece[][] pieces;
+    private StrategoPanel panel;
 
     // public StrategoBoard(BufferedImage boardImage, StrategoPiece[][] pieces) {
-    public StrategoBoard(StrategoPiece[][] pieces) {
+    public StrategoBoard(StrategoPiece[][] pieces, StrategoPanel panel) {
       //  this.boardImage = boardImage;
         this.pieces = pieces;
+        this.panel = panel;
     }
 
     public void render(Graphics g) {
@@ -16,8 +18,8 @@ public class StrategoBoard {
 
         // Draw each piece on the board
 
-        g.drawImage(pieces[0][0].getImage(), pieces[0][0].getX(), pieces[0][0].getY(), null);
-        g.drawImage(pieces[1][1].getImage(), pieces[1][1].getX(), pieces[1][1].getY(), null);
+        this.drawPiece(g, pieces[0][0]);
+        this.drawPiece(g, pieces[1][1]);
 
         /*
         for (int i = 0; i < pieces.length; i++) {
@@ -29,5 +31,14 @@ public class StrategoBoard {
         }
 
         */
+    }
+
+    public void drawPiece(Graphics g, StrategoPiece piece){
+
+        g.drawImage(piece.getImage().getScaledInstance((panel.getWidth() / StrategoPanel.BOARD_SIZE) - 20,
+                (panel.getHeight() / StrategoPanel.BOARD_SIZE) - 20, Image.SCALE_SMOOTH), 
+            (piece.getX() * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 10),
+            (piece.getY() * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 5), null);
+
     }
 }
