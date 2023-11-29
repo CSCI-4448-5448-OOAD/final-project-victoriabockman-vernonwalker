@@ -34,7 +34,15 @@ public class StrategoPanel extends JPanel {
         // Create a 10x10 board with initial piece placement
         StrategoPiece[][] initialPieces = new StrategoPiece[10][10];
         initialPieces[0][0] = PieceFactory.createPiece(6, 0, 0, "Red");
-        initialPieces[1][1] = PieceFactory.createPiece(1, 1, 1, "Red");
+        initialPieces[0][1] = PieceFactory.createPiece(1, 0, 1, "Red");
+        initialPieces[0][2] = PieceFactory.createPiece(10, 0, 2, "Red");
+        initialPieces[5][3] = PieceFactory.createPiece(0, 5, 3, "Red");
+
+        initialPieces[9][5] = PieceFactory.createPiece(5, 9, 5, "Blue");
+        initialPieces[9][3] = PieceFactory.createPiece(-1, 9, 3, "Blue");
+        initialPieces[5][5] = PieceFactory.createPiece(2, 5, 5, "Blue");
+        initialPieces[1][1] = PieceFactory.createPiece(3, 1, 1, "Blue");
+
         // Need to add more pieces...
 
         // Create the Stratego board
@@ -81,7 +89,7 @@ public class StrategoPanel extends JPanel {
         strategoBoard.render(g);
     }
 
-    private BufferedImage loadImage(String path) {
+    BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(new File(path));
         } catch (IOException e) {
