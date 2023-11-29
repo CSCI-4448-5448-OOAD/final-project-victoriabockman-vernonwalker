@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import Pieces.PieceFactory;
+import Pieces.StrategoPiece;
+
 public class StrategoPanel extends JPanel {
 
     public static final int BOARD_SIZE = 10;
@@ -23,15 +26,15 @@ public class StrategoPanel extends JPanel {
         // Load board and piece images
        // BufferedImage boardImage = loadImage("C:\\\\Users\\bockm\\Pictures\\Stratego\\board.png");
 
-        Image bombImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/bomb.png");
-        Image spyImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/spy.png");
+       // Image bombImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/bomb.png");
+       // Image spyImage = loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/spy.png");
 
         System.out.println("loaded");
 
         // Create a 10x10 board with initial piece placement
         StrategoPiece[][] initialPieces = new StrategoPiece[10][10];
-        initialPieces[0][0] = new StrategoPiece(6, 0, 0, bombImage);
-        initialPieces[1][1] = new StrategoPiece(1, 1, 1, spyImage);
+        initialPieces[0][0] = PieceFactory.createPiece(6, 0, 0, "Red");
+        initialPieces[1][1] = PieceFactory.createPiece(1, 1, 1, "Red");
         // Need to add more pieces...
 
         // Create the Stratego board

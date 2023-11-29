@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import Pieces.StrategoPiece;
 
 public class StrategoBoard {
    // private BufferedImage boardImage;
@@ -35,10 +36,10 @@ public class StrategoBoard {
 
     public void drawPiece(Graphics g, StrategoPiece piece){
 
-        g.drawImage(piece.getImage().getScaledInstance((panel.getWidth() / StrategoPanel.BOARD_SIZE) - 20,
+        g.drawImage(piece.image.getScaledInstance((panel.getWidth() / StrategoPanel.BOARD_SIZE) - 20,
                 (panel.getHeight() / StrategoPanel.BOARD_SIZE) - 20, Image.SCALE_SMOOTH), 
-            (piece.getX() * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 10),
-            (piece.getY() * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 5), null);
+            (piece.x * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 10),
+            (piece.y * (this.panel.getWidth() / StrategoPanel.BOARD_SIZE) + 5), null);
 
     }
 }
