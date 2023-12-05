@@ -106,7 +106,7 @@ public class StrategoPanel extends JPanel {
             // Handle mouse click, update the board state, and repaint
             // You can implement your game logic here
 
-            repaint();
+            repaint(); // what does this do?
         }
     }
 }

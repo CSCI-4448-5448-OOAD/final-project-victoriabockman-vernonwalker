@@ -1,5 +1,6 @@
 package Pieces;
 
+import Move.NoMove;
 
 public class Flag extends StrategoPiece{
 
@@ -9,6 +10,7 @@ public class Flag extends StrategoPiece{
         this.x = x;
         this.y = y;
         this.color = color;
+        this.moveStrategy = new NoMove();
 
         if(color == "Red"){
             // load red image

@@ -1,5 +1,6 @@
 package Pieces;
 
+import Move.NormalMove;
 
 public class Major extends StrategoPiece{
 
@@ -9,6 +10,7 @@ public class Major extends StrategoPiece{
         this.x = x;
         this.y = y;
         this.color = color;
+        this.moveStrategy = new NormalMove();
 
         if(color == "Red"){
             // load red image
