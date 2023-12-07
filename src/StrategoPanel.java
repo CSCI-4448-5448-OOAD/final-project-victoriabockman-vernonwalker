@@ -75,7 +75,7 @@ public class StrategoPanel extends JPanel {
         pieces.add(PieceFactory.createPiece(0, 5, 3, "Red"));
 
         pieces.add(PieceFactory.createPiece(5, 9, 5, "Blue"));
-        pieces.add(PieceFactory.createPiece(-1, 9, 3, "Blue"));
+        pieces.add(PieceFactory.createPiece(11, 9, 3, "Blue"));
         pieces.add(PieceFactory.createPiece(2, 5, 5, "Blue"));
         pieces.add(PieceFactory.createPiece(3, 1, 1, "Blue"));
 

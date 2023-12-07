@@ -105,7 +105,7 @@ public class StrategoBoard {
                 end = "FLAG.png";
                 break;
 
-            case -1:
+            case 11:
                 end = "BOMB.png";
                 break;
         
