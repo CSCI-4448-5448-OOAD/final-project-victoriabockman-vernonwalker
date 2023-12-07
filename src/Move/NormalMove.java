@@ -9,12 +9,13 @@ import Pieces.StrategoPiece;
 public class NormalMove implements MoveStrategy{
     
     @Override
-    public List<Point> legalMoves(StrategoPiece strategoPiece){
+    public List<Point> legalMoves(StrategoPiece strategoPiece, StrategoPanel board){
 
         List<Point> list = new ArrayList<>();
 
         int x = strategoPiece.x;
         int y = strategoPiece.y;
+        String color = strategoPiece.color;
 
         int x_left = x - 1;
         int x_right = x + 1;
@@ -147,11 +148,22 @@ public class NormalMove implements MoveStrategy{
             list.add(new Point(x, y_down));
         }
 
-        return list;
-
         // Will still need to check the board for allies or enemies in the desired spot
             // if ally, non legal move
             // if enemy, attack sequence
+        
+
+        // remove collision with ally piece
+        for (Point point : list) {
+            int x_coor = (int) point.getX();
+            int y_coor = (int) point.getY();
+
+            if(board.boardSquares[x][y].occupyingPiece.color == strategoPiece.color){
+                list.remove(point);
+            }
+        }
+
+        return list;
 
     }
 }

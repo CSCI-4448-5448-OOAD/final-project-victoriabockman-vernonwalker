@@ -3,11 +3,13 @@ package Move;
 import java.awt.Point;
 import java.util.List;
 
+
 import Pieces.StrategoPiece;
+
 
 public interface MoveStrategy {
 
-    List<Point> legalMoves(StrategoPiece strategoPiece);
+    List<Point> legalMoves(StrategoPiece strategoPiece, StrategoPanel board);
 
     static StrategoPiece attack(StrategoPiece attacker, StrategoPiece defender){
 
@@ -36,8 +38,13 @@ public interface MoveStrategy {
         else if(defenderRank > attackerRank){
             return defender;
         }
+        else{
+            return null;
+        }
 
 
     }
+
+    
     
 }

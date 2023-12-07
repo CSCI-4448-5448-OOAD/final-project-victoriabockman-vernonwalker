@@ -7,9 +7,11 @@ import java.util.List;
 import Pieces.StrategoPiece;
 
 public class ScoutMove implements MoveStrategy{
+
+    // The Scout can make subsequent attacks if there is an enemy nearby
     
     @Override
-    public List<Point> legalMoves(StrategoPiece strategoPiece){
+    public List<Point> legalMoves(StrategoPiece strategoPiece, StrategoPanel board){
 
         // This implementation allows for the jumping over of pieces at the moment
         // It currently only works to ensure no lake jumping or going out of bounds for legal moves
@@ -111,6 +113,16 @@ public class ScoutMove implements MoveStrategy{
             }
 
             y_down = y_down + 1;
+        }
+
+        // remove collision with ally piece
+        for (Point point : list) {
+            int x_coor = (int) point.getX();
+            int y_coor = (int) point.getY();
+
+            if(board.boardSquares[x][y].occupyingPiece.color == strategoPiece.color){
+                list.remove(point);
+            }
         }
 
         return list;
