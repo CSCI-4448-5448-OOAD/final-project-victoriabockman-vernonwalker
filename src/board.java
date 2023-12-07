@@ -16,6 +16,7 @@ public class board {
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Stratego Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         frame.add(new StrategoPanel());
         frame.pack();
         frame.setVisible(true);

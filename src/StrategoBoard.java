@@ -8,6 +8,7 @@ public class StrategoBoard {
    // private BufferedImage boardImage;
     private StrategoPiece[][] pieces;
     private StrategoPanel panel;
+    private Square[][] boardSquares;
 
     // public StrategoBoard(BufferedImage boardImage, StrategoPiece[][] pieces) {
     public StrategoBoard(StrategoPiece[][] pieces, StrategoPanel panel) {

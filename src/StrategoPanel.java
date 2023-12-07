@@ -2,9 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 
 import Pieces.PieceFactory;
@@ -14,12 +18,45 @@ public class StrategoPanel extends JPanel {
 
     public static final int BOARD_SIZE = 10;
     private StrategoBoard strategoBoard;
+    private ArrayList<StrategoPiece> pieces;
+    private Square[][] boardSquares;
 
     public StrategoPanel() {
+        this.pieces = new ArrayList<StrategoPiece>();
+        this.setPreferredSize(this.getPreferredSize());
+        this.setMaximumSize(this.getPreferredSize());
+        this.setMinimumSize(this.getPreferredSize());
+        this.setSize(this.getPreferredSize());
         setBorder(BorderFactory.createLineBorder(Color.black));
-        System.out.println("here");
         initializeBoard();
-        addMouseListener(new StrategoMouseListener());
+        boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
+
+        for(int i = 0; i < BOARD_SIZE; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                if((j==4 || j==5) && (i==4 || i==5)){
+                    boardSquares[i][j] = new Square(i, j, 0, null);
+                    this.add(boardSquares[i][j]);
+                }
+                else{
+                    boardSquares[i][j] = new Square(i, j, 1, null);
+                    this.add(boardSquares[i][j]);
+                }
+            }
+        }
+    }
+
+    public void render(Graphics g) {
+        // g.drawImage(boardImage, 0, 0, null);
+ 
+         // Draw each piece on the board
+         
+        for (int i = 0; i < pieces.size(); i++) {           
+            if(pieces.get(i) != null){
+
+                this.drawPiece(g, pieces.get(i));
+
+            } 
+        }    
     }
 
     private void initializeBoard() {
@@ -32,62 +69,80 @@ public class StrategoPanel extends JPanel {
         System.out.println("loaded");
 
         // Create a 10x10 board with initial piece placement
-        StrategoPiece[][] initialPieces = new StrategoPiece[10][10];
-        initialPieces[0][0] = PieceFactory.createPiece(6, 0, 0, "Red");
-        initialPieces[0][1] = PieceFactory.createPiece(1, 0, 1, "Red");
-        initialPieces[0][2] = PieceFactory.createPiece(10, 0, 2, "Red");
-        initialPieces[5][3] = PieceFactory.createPiece(0, 5, 3, "Red");
+        pieces.add(PieceFactory.createPiece(6, 0, 0, "Red"));
+        pieces.add(PieceFactory.createPiece(1, 0, 1, "Red"));
+        pieces.add(PieceFactory.createPiece(10, 0, 2, "Red"));
+        pieces.add(PieceFactory.createPiece(0, 5, 3, "Red"));
 
-        initialPieces[9][5] = PieceFactory.createPiece(5, 9, 5, "Blue");
-        initialPieces[9][3] = PieceFactory.createPiece(-1, 9, 3, "Blue");
-        initialPieces[5][5] = PieceFactory.createPiece(2, 5, 5, "Blue");
-        initialPieces[1][1] = PieceFactory.createPiece(3, 1, 1, "Blue");
+        pieces.add(PieceFactory.createPiece(5, 9, 5, "Blue"));
+        pieces.add(PieceFactory.createPiece(-1, 9, 3, "Blue"));
+        pieces.add(PieceFactory.createPiece(2, 5, 5, "Blue"));
+        pieces.add(PieceFactory.createPiece(3, 1, 1, "Blue"));
 
         // Need to add more pieces...
 
         // Create the Stratego board
        // strategoBoard = new StrategoBoard(boardImage, initialPieces);
-          strategoBoard = new StrategoBoard(initialPieces, this);
+        // this.addMouseListener(this);
+        // this.addMouseMotionListener(this);
+
     }
 
     public Dimension getPreferredSize() {
         // Size of board
-        return new Dimension(900, 1000);
+        return new Dimension(1000, 800);
     }
 
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        int squareSize = getWidth() / BOARD_SIZE;
+    public void paintComponent(Graphics g) {
+        // super.paintComponent(g);
 
-        // Draw the game board
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                g.setColor(Color.lightGray);
-                g.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
-                g.setColor(Color.BLACK);
-                g.drawRect(j * squareSize, i * squareSize, squareSize, squareSize);
+        for(int i = 0; i < BOARD_SIZE; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                if((j==4 || j==5) && (i==4 || i==5)){
+                    boardSquares[i][j].paintComponent(g);
+                }
+                else{
+                    boardSquares[i][j].paintComponent(g);
+                }
             }
         }
-
-        // DO I NEED TO FILL THE PICS HERE????
-
-        g.setColor(Color.BLUE);
-
-        // Fill left lake
-        g.fillRect(2 * squareSize, 5 * squareSize, squareSize, squareSize);
-        g.fillRect(2 * squareSize, 4 * squareSize, squareSize, squareSize);
-        g.fillRect(3 * squareSize, 5 * squareSize, squareSize, squareSize);
-        g.fillRect(3 * squareSize, 4 * squareSize, squareSize, squareSize);
-
-        // Fill right lake
-        g.fillRect(6 * squareSize, 5 * squareSize, squareSize, squareSize);
-        g.fillRect(6 * squareSize, 4 * squareSize, squareSize, squareSize);
-        g.fillRect(7 * squareSize, 5 * squareSize, squareSize, squareSize);
-        g.fillRect(7 * squareSize, 4 * squareSize, squareSize, squareSize);
-
-
-        strategoBoard.render(g);
     }
+
+    // protected void paintComponent(Graphics g) {
+    //     super.paintComponent(g);
+    //     int squareSize = getHeight() / BOARD_SIZE;
+
+    //     // Draw the game board
+    //     for (int i = 0; i < BOARD_SIZE; i++) {
+    //         for (int j = 0; j < BOARD_SIZE; j++) {
+    //             g.setColor(Color.green);
+    //             g.fillRect(j * squareSize, i * squareSize, squareSize, squareSize);
+    //             g.setColor(Color.BLACK);
+    //             g.drawRect(j * squareSize, i * squareSize, squareSize, squareSize);
+    //         }
+    //     }
+
+    //     // DO I NEED TO FILL THE PICS HERE????
+
+    //     g.setColor(Color.BLUE);
+
+    //     // Fill left lake
+    //     g.fillRect(2 * squareSize, 5 * squareSize, squareSize, squareSize);
+    //     g.fillRect(2 * squareSize, 4 * squareSize, squareSize, squareSize);
+    //     g.fillRect(3 * squareSize, 5 * squareSize, squareSize, squareSize);
+    //     g.fillRect(3 * squareSize, 4 * squareSize, squareSize, squareSize);
+
+    //     // Fill right lake
+    //     g.fillRect(6 * squareSize, 5 * squareSize, squareSize, squareSize);
+    //     g.fillRect(6 * squareSize, 4 * squareSize, squareSize, squareSize);
+    //     g.fillRect(7 * squareSize, 5 * squareSize, squareSize, squareSize);
+    //     g.fillRect(7 * squareSize, 4 * squareSize, squareSize, squareSize);
+
+
+    //     this.render(g);
+    // }
+
+
 
     BufferedImage loadImage(String path) {
         try {
@@ -98,15 +153,88 @@ public class StrategoPanel extends JPanel {
         }
     }
 
-    private class StrategoMouseListener extends MouseAdapter {
-        public void mouseClicked(MouseEvent e) {
-            int row = e.getY() / (getHeight() / BOARD_SIZE);
-            int col = e.getX() / (getWidth() / BOARD_SIZE);
+    public void drawPiece(Graphics g, StrategoPiece piece){
 
-            // Handle mouse click, update the board state, and repaint
-            // You can implement your game logic here
+        Image piece_image = getPieceImage(piece);
 
-            repaint();
-        }
+        g.drawImage(piece_image.getScaledInstance((this.getHeight() / StrategoPanel.BOARD_SIZE) - 20,
+                (this.getHeight() / StrategoPanel.BOARD_SIZE) - 20, Image.SCALE_SMOOTH), 
+                (piece.x * (this.getHeight() / StrategoPanel.BOARD_SIZE) + 10),
+                (piece.y * (this.getHeight() / StrategoPanel.BOARD_SIZE) + 5), null);
+
     }
+
+
+    private Image getPieceImage(StrategoPiece piece){
+        String col = "";
+        String end = "";
+
+        if(piece.color == "Red"){
+            col = "RED_";
+        }
+        else{
+            col = "BLUE_";
+        }
+
+        switch (piece.rank) {
+            case 1:
+                end = "SPY.png";
+                break;
+
+            case 2:
+                end = "SCOUT.png";
+                break;
+
+            case 3:
+                end = "MINER.png";
+                break;
+
+            case 4:
+                end = "SERGEANT.png";
+                break;
+
+            case 5:
+                end = "LIEUTENANT.png";
+                break;
+
+            case 6:
+                end = "CAPTAIN.png";
+                break;
+
+            case 7:
+                end = "MAJOR.png";
+                break;
+
+            case 8:
+                end = "COLONEL.png";
+                break;
+
+            case 9:
+                end = "GENERAL.png";
+                break;
+
+            case 10:
+                end = "MARSHAL.png";
+                break;
+            
+            case 0:
+                end = "FLAG.png";
+                break;
+
+            case -1:
+                end = "BOMB.png";
+                break;
+        
+            default:
+                break;
+        }
+
+        String img_name = col + end;
+
+        Image image = this.loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/"
+        + img_name);
+
+        return image;
+    }
+
 }
