@@ -2,6 +2,8 @@ package Pieces;
 
 import java.awt.image.BufferedImage;
 
+import Move.NormalMove;
+
 public class Lieutenant extends StrategoPiece{
 
     public Lieutenant(int rank, int x, int y, String color) {
@@ -10,6 +12,7 @@ public class Lieutenant extends StrategoPiece{
         this.x = x;
         this.y = y;
         this.color = color;
+        this.moveStrategy = new NormalMove();
 
         if(color == "Red"){
             // load red image

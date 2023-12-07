@@ -118,6 +118,9 @@ public class StrategoBoard {
         Image image = this.panel.loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/"
         + img_name);
 
-        return image;
+        Image image2 = this.panel.loadImage("\\Users\\bockm\\Desktop\\OOAD (4448)\\Final_project\\final-project-victoriabockman\\src\\Stratego\\" + img_name);
+
+        // return image;
+        return image2;
     }
 }

@@ -2,6 +2,8 @@ package Pieces;
 
 import java.awt.image.BufferedImage;
 
+import Move.ScoutMove;
+
 public class Scout extends StrategoPiece{
 
     public Scout(int rank, int x, int y, String color) {
@@ -10,6 +12,7 @@ public class Scout extends StrategoPiece{
         this.x = x;
         this.y = y;
         this.color = color;
+        this.moveStrategy = new ScoutMove();
 
         if(color == "Red"){
             // load red image
