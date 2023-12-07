@@ -20,6 +20,7 @@ public class StrategoPanel extends JPanel {
     private StrategoBoard strategoBoard;
     private ArrayList<StrategoPiece> pieces;
     private Square[][] boardSquares;
+    private int squareSize;
 
     public StrategoPanel() {
         this.pieces = new ArrayList<StrategoPiece>();
@@ -31,14 +32,16 @@ public class StrategoPanel extends JPanel {
         initializeBoard();
         boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
 
+        this.squareSize = this.getHeight() / BOARD_SIZE;
+
         for(int i = 0; i < BOARD_SIZE; i++){
             for(int j = 0; j < BOARD_SIZE; j++){
-                if((j==4 || j==5) && (i==4 || i==5)){
-                    boardSquares[i][j] = new Square(i, j, 0, null);
+                if((i==2 || i==3 || i==6 || i==7) && (j==4 || j==5)){
+                    boardSquares[i][j] = new Square(i, j, 0, this, this.squareSize);
                     this.add(boardSquares[i][j]);
                 }
                 else{
-                    boardSquares[i][j] = new Square(i, j, 1, null);
+                    boardSquares[i][j] = new Square(i, j, 1, this, this.squareSize);
                     this.add(boardSquares[i][j]);
                 }
             }
