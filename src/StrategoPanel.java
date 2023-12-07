@@ -11,25 +11,28 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import Pieces.PieceFactory;
 import Pieces.StrategoPiece;
 
-public class StrategoPanel extends JPanel {
+public class StrategoPanel extends JPanel implements MouseListener, MouseMotionListener{
 
     public static final int BOARD_SIZE = 10;
     private StrategoBoard strategoBoard;
     private ArrayList<StrategoPiece> pieces;
     private Square[][] boardSquares;
     private int squareSize;
+    private StrategoPiece currPiece;
+    private int currY;
+    private int currX;
+    private String color;
 
-    public StrategoPanel() {
+    public StrategoPanel(String c) {
+        this.color = c;
         this.pieces = new ArrayList<StrategoPiece>();
         this.setPreferredSize(this.getPreferredSize());
         this.setMaximumSize(this.getPreferredSize());
         this.setMinimumSize(this.getPreferredSize());
         this.setSize(this.getPreferredSize());
         setBorder(BorderFactory.createLineBorder(Color.black));
-        initializeBoard();
         boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
 
         this.squareSize = this.getHeight() / BOARD_SIZE;
@@ -39,28 +42,95 @@ public class StrategoPanel extends JPanel {
                 if((i==2 || i==3 || i==6 || i==7) && (j==4 || j==5)){
                     boardSquares[i][j] = new Square(i, j, 0, this, this.squareSize);
                     this.add(boardSquares[i][j]);
+                    boardSquares[i][j].setBounds(i * this.getHeight() / StrategoPanel.BOARD_SIZE,
+                                                 j * this.getHeight() / StrategoPanel.BOARD_SIZE, 
+                                                 this.squareSize, this.squareSize);
                 }
                 else{
                     boardSquares[i][j] = new Square(i, j, 1, this, this.squareSize);
                     this.add(boardSquares[i][j]);
+                    boardSquares[i][j].setBounds(i * this.getHeight() / StrategoPanel.BOARD_SIZE,
+                                                 j * this.getHeight() / StrategoPanel.BOARD_SIZE, 
+                                                 this.squareSize, this.squareSize);
+                    this.add(boardSquares[i][j]);
                 }
             }
         }
+
+        initializeBoard();
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 
-    public void render(Graphics g) {
-        // g.drawImage(boardImage, 0, 0, null);
+    @Override
+    public void mousePressed(MouseEvent e){
+        System.out.println("Mouse pressed function activated");
+        currX = e.getX();
+        currY = e.getY();
+
+        Square s = (Square) this.getComponentAt(new Point(currX, currY));
+
+        System.out.println(s.xNum + " " + s.yNum);
+
+        if(s.getPiece() == null){
+            currPiece = null;
+            return;
+        }
+
+        currPiece = s.getPiece();
+
+        if(currPiece.color != this.color){
+            return;
+        }
+
+        repaint();
+
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e){
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e){
+        
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e){
+        
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e){
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e){
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e){
+        
+    }
+
+    // public void render(Graphics g) {
+    //     // g.drawImage(boardImage, 0, 0, null);
  
-         // Draw each piece on the board
+    //      // Draw each piece on the board
          
-        for (int i = 0; i < pieces.size(); i++) {           
-            if(pieces.get(i) != null){
+    //     for (int i = 0; i < pieces.size(); i++) {           
+    //         if(pieces.get(i) != null){
 
-                this.drawPiece(g, pieces.get(i));
+    //             this.drawPiece(g, pieces.get(i));
 
-            } 
-        }    
-    }
+    //         } 
+    //     }    
+    // }
 
     private void initializeBoard() {
         // Load board and piece images
@@ -72,15 +142,15 @@ public class StrategoPanel extends JPanel {
         System.out.println("loaded");
 
         // Create a 10x10 board with initial piece placement
-        pieces.add(PieceFactory.createPiece(6, 0, 0, "Red"));
-        pieces.add(PieceFactory.createPiece(1, 0, 1, "Red"));
-        pieces.add(PieceFactory.createPiece(10, 0, 2, "Red"));
-        pieces.add(PieceFactory.createPiece(0, 5, 3, "Red"));
+        createNewPiece(6, 0, 0, "Red");
+        createNewPiece(1, 0, 1, "Red");
+        createNewPiece(10, 0, 2, "Red");
+        createNewPiece(0, 5, 3, "Red");
 
-        pieces.add(PieceFactory.createPiece(5, 9, 5, "Blue"));
-        pieces.add(PieceFactory.createPiece(11, 9, 3, "Blue"));
-        pieces.add(PieceFactory.createPiece(2, 5, 5, "Blue"));
-        pieces.add(PieceFactory.createPiece(3, 1, 1, "Blue"));
+        createNewPiece(5, 9, 5, "Blue");
+        createNewPiece(11, 9, 3, "Blue");
+        createNewPiece(2, 5, 5, "Blue");
+        createNewPiece(3, 1, 1, "Blue");
 
         // Need to add more pieces...
 
@@ -91,9 +161,13 @@ public class StrategoPanel extends JPanel {
 
     }
 
+    private void createNewPiece(int rank, int x, int y, String c){
+        pieces.add(PieceFactory.createPiece(rank, x, y, c, this.boardSquares[x][y]));
+    }
+
     public Dimension getPreferredSize() {
         // Size of board
-        return new Dimension(1000, 800);
+        return new Dimension(1000, 1000);
     }
 
     public void paintComponent(Graphics g) {
@@ -224,7 +298,7 @@ public class StrategoPanel extends JPanel {
                 end = "FLAG.png";
                 break;
 
-            case -1:
+            case 11:
                 end = "BOMB.png";
                 break;
         

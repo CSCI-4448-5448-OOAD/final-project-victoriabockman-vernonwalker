@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
@@ -12,8 +13,8 @@ import javax.swing.JComponent;
 import Pieces.StrategoPiece;
 
 public class Square extends JComponent{
-    private int xNum;
-    private int yNum;
+    public int xNum;
+    public int yNum;
     private StrategoPanel pan;
     private StrategoPiece occupyingPiece;
     private int squareSize;
@@ -29,6 +30,8 @@ public class Square extends JComponent{
         this.color = c;
         this.pan = p;
         this.squareSize = sq;
+        this.setLocation(x * sq, y * sq);
+        this.setSize(sq, sq);
     }
 
     public void paintComponent(Graphics g) {
@@ -48,7 +51,14 @@ public class Square extends JComponent{
         g.drawRect(this.xNum * squareSize, 
             this.yNum * squareSize, squareSize, squareSize);
 
-        this.drawPiece(g, this.getPiece());
+
+        if(this.occupyingPiece != null){
+            this.drawPiece(g, this.getPiece());
+        }
+
+        System.out.println("X: " + this.getX() + " Y: " + this.getY());
+        System.out.println("Width: " + this.getWidth() + " Height: " + this.getHeight());
+        System.out.println("Superclass Squaresize: " + this.squareSize);
         
     }
 
@@ -76,10 +86,10 @@ public class Square extends JComponent{
 
         Image piece_image = getPieceImage(piece);
 
-        g.drawImage(piece_image.getScaledInstance((this.squareSize / StrategoPanel.BOARD_SIZE) - 20,
-                (this.squareSize / StrategoPanel.BOARD_SIZE) - 20, Image.SCALE_SMOOTH), 
-                (piece.x * (this.squareSize / StrategoPanel.BOARD_SIZE) + 10),
-                (piece.y * (this.squareSize / StrategoPanel.BOARD_SIZE) + 5), null);
+        g.drawImage(piece_image.getScaledInstance((this.squareSize) - 20,
+                (this.squareSize) - 20, Image.SCALE_SMOOTH), 
+                (piece.x * (this.squareSize) + 10),
+                (piece.y * (this.squareSize) + 5), null);
 
     }
 
@@ -140,7 +150,7 @@ public class Square extends JComponent{
                 end = "FLAG.png";
                 break;
 
-            case -1:
+            case 11:
                 end = "BOMB.png";
                 break;
         
@@ -150,8 +160,12 @@ public class Square extends JComponent{
 
         String img_name = col + end;
 
-        Image image = this.loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/"
-        + img_name);
+        // Image image = this.loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/"
+        // + img_name);
+
+        System.out.println("\n" + Paths.get("").toAbsolutePath().toString() + "/src/Stratego/" + img_name + "\n");
+
+        Image image = this.loadImage(Paths.get("").toAbsolutePath().toString() + "/src/Stratego/" + img_name);
 
         return image;
     }

@@ -17,7 +17,7 @@ public class board {
         JFrame frame = new JFrame("Stratego Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.add(new StrategoPanel());
+        frame.add(new StrategoPanel("Red"));
         frame.pack();
         frame.setVisible(true);
     }
