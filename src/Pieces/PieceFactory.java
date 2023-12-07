@@ -52,7 +52,7 @@ public class PieceFactory {
         }
 
         // IMPORTANT: Bomb rank is -1
-        else if(rank == -1){
+        else if(rank == 11){
             return new Bomb(rank, x, y, color);
             // Quantity: 6
         }
