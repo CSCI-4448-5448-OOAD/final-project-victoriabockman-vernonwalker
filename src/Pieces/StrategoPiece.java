@@ -12,6 +12,7 @@ public abstract class StrategoPiece {
     public BufferedImage image;
     public String color;
     public MoveStrategy moveStrategy;
+    public Boolean isAlive = true;
 
     public BufferedImage loadImage(String path) {
         try {
