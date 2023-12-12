@@ -4,10 +4,9 @@ import Pieces.StrategoPiece;
 
 public class PresetBoards {
 
-    StrategoPanel strategoBoard = new StrategoPanel(null);
 
 
-    public void Deboer1(String color){
+    public void Deboer1(String color, StrategoPanel strategoBoard){
 
         int[] list1 = {3,3,11,0,11,3,2,11,3,2};
         int[] list2 = {4,6,5,11,5,8,7,4,11,4};
@@ -50,7 +49,7 @@ public class PresetBoards {
         }
     }
 
-    public void Deboer2(String color){
+    public void Deboer2(String color, StrategoPanel strategoBoard){
 
         int[] list1 = {3,11,11,0,11,4,3,3,3,7};
         int[] list2 = {2,5,4,11,5,6,1,7,2,7};
