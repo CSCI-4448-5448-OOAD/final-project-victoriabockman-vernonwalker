@@ -1,10 +1,8 @@
 package ooad;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+
 import Pieces.StrategoPiece;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class keepfornow {
    // private BufferedImage boardImage;
