@@ -9,15 +9,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.awt.Point;
 
 import javax.imageio.ImageIO;
 
 import Pieces.StrategoPiece;
+import Pieces.MoveStrategy;
+import Pieces.NoMove;
+import Pieces.NormalMove;
+import Pieces.ScoutMove;
 
 public class StrategoPanel extends JPanel implements MouseListener, MouseMotionListener{
 
     public static final int BOARD_SIZE = 10;
-    private keepfornow strategoBoard;
+    
     public ArrayList<StrategoPiece> pieces;
     public Square[][] boardSquares;
     private int squareSize;
@@ -33,9 +38,9 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.setMaximumSize(this.getPreferredSize());
         this.setMinimumSize(this.getPreferredSize());
         this.setSize(this.getPreferredSize());
-        setBorder(BorderFactory.createLineBorder(Color.black));
+        // setBorder(BorderFactory.createLineBorder(Color.black));
         boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
-
+        setLayout(new GridLayout(10,10,0,0));
         this.squareSize = this.getHeight() / BOARD_SIZE;
 
         for(int i = 0; i < BOARD_SIZE; i++){
@@ -91,6 +96,12 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseReleased(MouseEvent e){
+        System.out.println("Mouse released function activated");
+        Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
+
+        System.out.println(sq.xNum + " " + sq.yNum);
+
+
 
     }
 

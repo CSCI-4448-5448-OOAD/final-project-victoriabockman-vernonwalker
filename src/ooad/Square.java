@@ -57,9 +57,9 @@ public class Square extends JComponent{
             this.drawPiece(g, this.getPiece());
         }
 
-        System.out.println("X: " + this.getX() + " Y: " + this.getY());
-        System.out.println("Width: " + this.getWidth() + " Height: " + this.getHeight());
-        System.out.println("Superclass Squaresize: " + this.squareSize);
+        // System.out.println("X: " + this.getX() + " Y: " + this.getY());
+        // System.out.println("Width: " + this.getWidth() + " Height: " + this.getHeight());
+        // System.out.println("Superclass Squaresize: " + this.squareSize);
         
     }
 
@@ -164,7 +164,7 @@ public class Square extends JComponent{
         // Image image = this.loadImage("/Users/vernonwalker/Desktop/All Other Classes/Object Oriented Programming/final-project-victoriabockman/src/Stratego/"
         // + img_name);
 
-        System.out.println("\n" + Paths.get("").toAbsolutePath().toString() + "/src/Stratego/" + img_name + "\n");
+        // System.out.println("\n" + Paths.get("").toAbsolutePath().toString() + "/src/Stratego/" + img_name + "\n");
 
         Image image = this.loadImage(Paths.get("").toAbsolutePath().toString() + "/src/Stratego/" + img_name);
 
