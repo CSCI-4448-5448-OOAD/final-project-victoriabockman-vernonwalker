@@ -4,7 +4,8 @@ import Pieces.StrategoPiece;
 
 public class PresetBoards {
 
-    
+    StrategoPanel strategoBoard = new StrategoPanel(null);
+
 
     public void Deboer1(String color){
 
@@ -15,16 +16,16 @@ public class PresetBoards {
     
         if(color.equals("Red")){
             for(int i = 0; i < 10; i++){
-                StrategoPanel.pieces.add(PieceFactory.createPiece(list1[i], i, 0, color, StrategoPanel.boardSquares[i][0]));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list1[i], i, 0, color, strategoBoard.boardSquares[i][0]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list2[i], i, 1, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list2[i], i, 1, color, strategoBoard.boardSquares[i][1]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list3[i], i, 2, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list3[i], i, 2, color, strategoBoard.boardSquares[i][2]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list4[i], i, 3, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list4[i], i, 3, color, strategoBoard.boardSquares[i][3]));
             }
         }
 
@@ -35,16 +36,16 @@ public class PresetBoards {
 
         if(color.equals("Blue")){
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list5[i], i, 6, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list5[i], i, 6, color, strategoBoard.boardSquares[i][6]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list6[i], i, 7, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list6[i], i, 7, color, strategoBoard.boardSquares[i][7]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list7[i], i, 8, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list7[i], i, 8, color, strategoBoard.boardSquares[i][8]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list8[i], i, 9, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list8[i], i, 9, color, strategoBoard.boardSquares[i][9]));
             }
         }
     }
@@ -58,16 +59,16 @@ public class PresetBoards {
     
         if(color.equals("Red")){
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list1[i], i, 0, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list1[i], i, 0, color, strategoBoard.boardSquares[i][0]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list2[i], i, 1, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list2[i], i, 1, color, strategoBoard.boardSquares[i][1]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list3[i], i, 2, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list3[i], i, 2, color, strategoBoard.boardSquares[i][2]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list4[i], i, 3, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list4[i], i, 3, color, strategoBoard.boardSquares[i][3]));
             }
         }
 
@@ -78,16 +79,16 @@ public class PresetBoards {
 
         if(color.equals("Blue")){
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list5[i], i, 6, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list5[i], i, 6, color, strategoBoard.boardSquares[i][6]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list6[i], i, 7, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list6[i], i, 7, color, strategoBoard.boardSquares[i][7]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list7[i], i, 8, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list7[i], i, 8, color, strategoBoard.boardSquares[i][8]));
             }
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list8[i], i, 9, color));
+                strategoBoard.pieces.add(PieceFactory.createPiece(list8[i], i, 9, color, strategoBoard.boardSquares[i][9]));
             }
         }
     }
