@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NoMove;
-
 public class Bomb extends StrategoPiece{
 
     public Bomb(int rank, int x, int y, String color) {

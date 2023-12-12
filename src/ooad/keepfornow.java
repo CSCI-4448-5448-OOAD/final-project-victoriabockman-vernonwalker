@@ -1,17 +1,19 @@
+package ooad;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import Pieces.StrategoPiece;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class StrategoBoard {
+public class keepfornow {
    // private BufferedImage boardImage;
     private StrategoPiece[][] pieces;
     private StrategoPanel panel;
     private Square[][] boardSquares;
 
     // public StrategoBoard(BufferedImage boardImage, StrategoPiece[][] pieces) {
-    public StrategoBoard(StrategoPiece[][] pieces, StrategoPanel panel) {
+    public keepfornow(StrategoPiece[][] pieces, StrategoPanel panel) {
       //  this.boardImage = boardImage;
         this.pieces = pieces;
         this.panel = panel;

@@ -1,8 +1,10 @@
-import Pieces.PieceFactory;
+package ooad;
 import Pieces.StrategoPiece;
-import StrategoPanel;
+
 
 public class PresetBoards {
+
+    
 
     public void Deboer1(String color){
 
@@ -13,7 +15,7 @@ public class PresetBoards {
     
         if(color.equals("Red")){
             for(int i = 0; i < 10; i++){
-                pieces.add(PieceFactory.createPiece(list1[i], i, 0, color));
+                StrategoPanel.pieces.add(PieceFactory.createPiece(list1[i], i, 0, color, StrategoPanel.boardSquares[i][0]));
             }
             for(int i = 0; i < 10; i++){
                 pieces.add(PieceFactory.createPiece(list2[i], i, 1, color));

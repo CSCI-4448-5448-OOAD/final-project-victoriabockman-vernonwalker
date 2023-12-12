@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NormalMove;
-
 public class Colonel extends StrategoPiece{
 
     public Colonel(int rank, int x, int y, String color) {

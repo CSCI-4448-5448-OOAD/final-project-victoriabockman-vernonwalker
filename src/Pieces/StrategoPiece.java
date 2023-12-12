@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import Move.MoveStrategy;
-
 public abstract class StrategoPiece {
     public int rank;
     public int x, y; // position on the board

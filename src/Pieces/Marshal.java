@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NormalMove;
-
 public class Marshal extends StrategoPiece{
 
     public Marshal(int rank, int x, int y, String color) {

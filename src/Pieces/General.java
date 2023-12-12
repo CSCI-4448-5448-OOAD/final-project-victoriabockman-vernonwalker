@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NormalMove;
-
 public class General extends StrategoPiece{
 
     public General(int rank, int x, int y, String color) {

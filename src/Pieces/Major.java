@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NormalMove;
-
 public class Major extends StrategoPiece{
 
     public Major(int rank, int x, int y, String color) {

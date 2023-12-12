@@ -2,8 +2,6 @@ package Pieces;
 
 import java.awt.image.BufferedImage;
 
-import Move.ScoutMove;
-
 public class Scout extends StrategoPiece{
 
     public Scout(int rank, int x, int y, String color) {

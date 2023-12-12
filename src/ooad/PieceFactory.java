@@ -1,3 +1,4 @@
+package ooad;
 
 
 import java.awt.image.BufferedImage;

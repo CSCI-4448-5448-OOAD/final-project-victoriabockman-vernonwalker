@@ -1,10 +1,11 @@
-package Move;
+package Pieces;
+
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import Pieces.StrategoPiece;
+import ooad.StrategoPanel;
 
 public class ScoutMove implements MoveStrategy{
 

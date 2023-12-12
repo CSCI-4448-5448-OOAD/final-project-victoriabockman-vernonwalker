@@ -1,3 +1,4 @@
+package ooad;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,7 +17,7 @@ public class Square extends JComponent{
     public int xNum;
     public int yNum;
     private StrategoPanel pan;
-    private StrategoPiece occupyingPiece;
+    public StrategoPiece occupyingPiece;
     private int squareSize;
     // private int xPos;
     // private int yPos;

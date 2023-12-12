@@ -1,7 +1,5 @@
 package Pieces;
 
-import Move.NoMove;
-
 public class Flag extends StrategoPiece{
 
     public Flag(int rank, int x, int y, String color) {

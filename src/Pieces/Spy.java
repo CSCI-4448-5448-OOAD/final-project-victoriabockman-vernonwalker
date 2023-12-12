@@ -2,8 +2,6 @@ package Pieces;
 
 import java.awt.image.BufferedImage;
 
-import Move.NormalMove;
-
 public class Spy extends StrategoPiece{
 
     public Spy(int rank, int x, int y, String color) {

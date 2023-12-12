@@ -1,3 +1,4 @@
+package ooad;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -16,9 +17,9 @@ import Pieces.StrategoPiece;
 public class StrategoPanel extends JPanel implements MouseListener, MouseMotionListener{
 
     public static final int BOARD_SIZE = 10;
-    private StrategoBoard strategoBoard;
-    private ArrayList<StrategoPiece> pieces;
-    private Square[][] boardSquares;
+    private keepfornow strategoBoard;
+    public ArrayList<StrategoPiece> pieces;
+    public Square[][] boardSquares;
     private int squareSize;
     private StrategoPiece currPiece;
     private int currY;
