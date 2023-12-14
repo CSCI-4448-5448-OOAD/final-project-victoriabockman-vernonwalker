@@ -1,4 +1,6 @@
 package ooad;
+import java.awt.BorderLayout;
+
 import javax.swing.*;
 
 
@@ -11,11 +13,12 @@ public class board {
     }
 
     private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Stratego Game");
+        StrategoPanel panel = new StrategoPanel("Red");
+        StrategoFrame frame = new StrategoFrame(panel, "Stratego Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.add(new StrategoPanel("Red"));
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(1200, 1050);
     }
 }

@@ -1,6 +1,8 @@
 package ooad;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -94,7 +96,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
             return;
         }
 
-        repaint();
+        this.repaint();
 
 
     }
@@ -128,7 +130,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.currX = e.getX();
         this.currY = e.getY();
 
-        repaint();
+        this.repaint();
 
     }
 
@@ -294,51 +296,51 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
         switch (piece.rank) {
             case 1:
-                end = "SPY.png";
+                end = "SPY-min.png";
                 break;
 
             case 2:
-                end = "SCOUT.png";
+                end = "SCOUT-min.png";
                 break;
 
             case 3:
-                end = "MINER.png";
+                end = "MINER-min.png";
                 break;
 
             case 4:
-                end = "SERGEANT.png";
+                end = "SERGEANT-min.png";
                 break;
 
             case 5:
-                end = "LIEUTENANT.png";
+                end = "LIEUTENANT-min.png";
                 break;
 
             case 6:
-                end = "CAPTAIN.png";
+                end = "CAPTAIN-min.png";
                 break;
 
             case 7:
-                end = "MAJOR.png";
+                end = "MAJOR-min.png";
                 break;
 
             case 8:
-                end = "COLONEL.png";
+                end = "COLONEL-min.png";
                 break;
 
             case 9:
-                end = "GENERAL.png";
+                end = "GENERAL-min.png";
                 break;
 
             case 10:
-                end = "MARSHAL.png";
+                end = "MARSHAL-min.png";
                 break;
             
             case 0:
-                end = "FLAG.png";
+                end = "FLAG-min.png";
                 break;
 
             case 11:
-                end = "BOMB.png";
+                end = "BOMB-min.png";
                 break;
         
             default:
@@ -353,4 +355,44 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         return image;
     }
 
+    public void reset(){
+        this.presets = null;
+        this.presets = new PresetBoards();
+        this.controller = null;
+        this.pieces = null;
+        this.pieces = new ArrayList<StrategoPiece>();
+        // setBorder(BorderFactory.createLineBorder(Color.black));
+        for(int j = 0; j < BOARD_SIZE; j++){
+            for(int i = 0; i < BOARD_SIZE; i++){
+                this.remove(boardSquares[j][i]);
+            }
+        }
+        this.boardSquares = null;
+        boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
+
+        for(int j = 0; j < BOARD_SIZE; j++){
+            for(int i = 0; i < BOARD_SIZE; i++){
+                if((i==2 || i==3 || i==6 || i==7) && (j==4 || j==5)){
+                    boardSquares[i][j] = new Square(i, j, 0, this, this.squareSize);
+                    this.add(boardSquares[i][j]);
+                    boardSquares[i][j].setBounds(i * this.getHeight() / StrategoPanel.BOARD_SIZE,
+                                                 j * this.getHeight() / StrategoPanel.BOARD_SIZE, 
+                                                 this.squareSize, this.squareSize);
+                }
+                else{
+                    boardSquares[i][j] = new Square(i, j, 1, this, this.squareSize);
+                    this.add(boardSquares[i][j]);
+                    boardSquares[i][j].setBounds(i * this.getHeight() / StrategoPanel.BOARD_SIZE,
+                                                 j * this.getHeight() / StrategoPanel.BOARD_SIZE, 
+                                                 this.squareSize, this.squareSize);
+                    this.add(boardSquares[i][j]);
+                }
+            }
+        }
+
+        presets.Deboer1("Red", this);
+        presets.Deboer2("Blue", this);
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
+    }
 }

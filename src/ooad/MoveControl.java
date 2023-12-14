@@ -47,4 +47,12 @@ public class MoveControl implements Controller{
         return;
         
     }
+
+    public void update(){
+        // do nothing
+    }
+
+    public void update(StrategoPanel p){
+        // do nothing
+    }
 }

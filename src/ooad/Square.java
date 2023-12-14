@@ -108,51 +108,51 @@ public class Square extends JComponent{
 
         switch (piece.rank) {
             case 1:
-                end = "SPY.png";
+                end = "SPY-min.png";
                 break;
 
             case 2:
-                end = "SCOUT.png";
+                end = "SCOUT-min.png";
                 break;
 
             case 3:
-                end = "MINER.png";
+                end = "MINER-min.png";
                 break;
 
             case 4:
-                end = "SERGEANT.png";
+                end = "SERGEANT-min.png";
                 break;
 
             case 5:
-                end = "LIEUTENANT.png";
+                end = "LIEUTENANT-min.png";
                 break;
 
             case 6:
-                end = "CAPTAIN.png";
+                end = "CAPTAIN-min.png";
                 break;
 
             case 7:
-                end = "MAJOR.png";
+                end = "MAJOR-min.png";
                 break;
 
             case 8:
-                end = "COLONEL.png";
+                end = "COLONEL-min.png";
                 break;
 
             case 9:
-                end = "GENERAL.png";
+                end = "GENERAL-min.png";
                 break;
 
             case 10:
-                end = "MARSHAL.png";
+                end = "MARSHAL-min.png";
                 break;
             
             case 0:
-                end = "FLAG.png";
+                end = "FLAG-min.png";
                 break;
 
             case 11:
-                end = "BOMB.png";
+                end = "BOMB-min.png";
                 break;
         
             default:
