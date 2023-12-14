@@ -83,6 +83,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         }
 
         this.currPiece = s.getPiece();
+        this.start = s;
 
         System.out.println(this.currPiece);
 
@@ -108,7 +109,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.controller = new MoveControl();
 
         if(this.currPiece != null){
-            
+
             this.controller.update(this.start, this.currPiece, sq, this);
 
         }
@@ -120,6 +121,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.controller = null;
 
         this.currPiece = null;
+        this.start = null;
         this.currX = e.getX();
         this.currY = e.getY();
 

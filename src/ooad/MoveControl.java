@@ -16,12 +16,13 @@ public class MoveControl implements Controller{
 
         System.out.println(end.xNum + " " + end.yNum);
 
-        Point endPoint = new Point(end.xNum, end.yNum);
         System.out.println(legalMoves.size());
 
-        for(int i = 0; i < legalMoves.size(); i++){
-            System.out.println(legalMoves.get(i).getX() + " " + legalMoves.get(i).getY());   
-            if(legalMoves.get(i) == endPoint){
+        for(int i = 0; i < legalMoves.size(); i++){ 
+            int x = (int) legalMoves.get(i).getX();
+            int y = (int) legalMoves.get(i).getY();
+
+            if(x == end.xNum && y == end.yNum){
                 isLegal = true;
             }
         }

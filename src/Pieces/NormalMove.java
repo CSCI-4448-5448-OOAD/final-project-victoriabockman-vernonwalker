@@ -163,8 +163,10 @@ public class NormalMove implements MoveStrategy{
             int x_coor = (int) point.getX();
             int y_coor = (int) point.getY();
 
-            if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
-                list.remove(point);
+            if(board.boardSquares[x_coor][y_coor].occupyingPiece != null){
+                if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
+                    list.remove(point);
+                }
             }
         }
         
