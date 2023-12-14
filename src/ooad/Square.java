@@ -171,4 +171,8 @@ public class Square extends JComponent{
         return image;
     }
 
+    public int getColor(){
+        return this.color;
+    }
+
 }
