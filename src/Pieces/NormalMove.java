@@ -2,7 +2,6 @@ package Pieces;
 
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -10,7 +9,7 @@ import ooad.StrategoPanel;
 
 public class NormalMove implements MoveStrategy{
 
-    private static final Object lock = new Object();
+   // private static final Object lock = new Object();
     
     @Override
     public List<Point> legalMoves(StrategoPiece strategoPiece, StrategoPanel board){
@@ -19,7 +18,6 @@ public class NormalMove implements MoveStrategy{
 
         int x = strategoPiece.x;
         int y = strategoPiece.y;
-        String color = strategoPiece.color;
 
         int x_left = x - 1;
         int x_right = x + 1;
@@ -43,11 +41,6 @@ public class NormalMove implements MoveStrategy{
         if(y_down != 10){
             list.add(new Point(x, y_down));
         }
-
-        // Will still need to check the board for allies or enemies in the desired spot
-            // if ally, non legal move
-            // if enemy, attack sequence
-        
 
         // remove collision with ally piece
         

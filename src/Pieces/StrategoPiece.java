@@ -22,28 +22,4 @@ public abstract class StrategoPiece {
             return null;
         }
     }
-    /*
-    public StrategoPiece(int rank, int x, int y, BufferedImage image) {
-        this.rank = rank;
-        this.x = x;
-        this.y = y;
-        this.image = image;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public BufferedImage getImage() {
-        return image;
-    }
-    */
 }

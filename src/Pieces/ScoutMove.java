@@ -2,7 +2,6 @@ package Pieces;
 
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
