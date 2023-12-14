@@ -1,7 +1,6 @@
 package ooad;
 
-
-import java.awt.image.BufferedImage;
+// FACTORY PATTERN
 
 import Pieces.Bomb;
 import Pieces.Captain;
@@ -69,7 +68,7 @@ public class PieceFactory {
             // Quantity: 1
         }
 
-        // IMPORTANT: Bomb rank is -1
+        // IMPORTANT: Bomb rank is 11
         else if(rank == 11){
             p = new Bomb(rank, x, y, color);
             // Quantity: 6

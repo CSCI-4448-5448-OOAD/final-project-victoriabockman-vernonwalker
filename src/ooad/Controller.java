@@ -1,5 +1,8 @@
 package ooad;
 
+// COMMAND PATTERN
+// MVC PATTERN
+
 import Pieces.StrategoPiece;
 
 public interface Controller {

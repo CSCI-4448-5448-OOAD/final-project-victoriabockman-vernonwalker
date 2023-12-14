@@ -1,5 +1,6 @@
 package Pieces;
 
+// STRATEGY PATTERN
 
 import java.awt.Point;
 import java.util.List;

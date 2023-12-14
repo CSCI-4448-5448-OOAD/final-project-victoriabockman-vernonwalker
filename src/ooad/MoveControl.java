@@ -3,6 +3,9 @@ package ooad;
 import java.util.List;
 import java.awt.Point;
 
+// COMMAND PATTERN
+// MVC PATTERN
+
 import Pieces.MoveStrategy;
 import Pieces.StrategoPiece;
 
