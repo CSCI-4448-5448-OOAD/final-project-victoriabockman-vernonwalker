@@ -160,8 +160,10 @@ public class NormalMove implements MoveStrategy{
         // remove collision with ally piece
         
         for (Point point : list) {
+            int x_coor = (int) point.getX();
+            int y_coor = (int) point.getY();
 
-            if(board.boardSquares[x][y].occupyingPiece.color == strategoPiece.color){
+            if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
                 list.remove(point);
             }
         }
