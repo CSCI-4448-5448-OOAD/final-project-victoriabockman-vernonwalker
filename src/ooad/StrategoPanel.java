@@ -68,12 +68,11 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
-        this.addMouseListener(this);
-        this.addMouseMotionListener(this);
+        //this.addMouseListener(this);
+        //this.addMouseMotionListener(this);
     }
 
-    @Override
-    public void mousePressed(MouseEvent e){
+    public void mousePressedCaller(MouseEvent e){
         System.out.println("Mouse pressed function activated");
         currX = e.getX();
         currY = e.getY();
@@ -101,8 +100,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
     }
 
-    @Override
-    public void mouseReleased(MouseEvent e){
+    public void mouseReleasedCaller(MouseEvent e){
 
         System.out.println("Mouse released function activated");
 
@@ -392,7 +390,17 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
-        this.addMouseListener(this);
-        this.addMouseMotionListener(this);
+        //this.addMouseListener(this);
+        //this.addMouseMotionListener(this);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // do nothing
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // do nothing
     }
 }
