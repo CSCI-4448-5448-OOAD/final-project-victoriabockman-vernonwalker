@@ -1,5 +1,4 @@
 package ooad;
-import Pieces.StrategoPiece;
 
 
 public class PresetBoards {

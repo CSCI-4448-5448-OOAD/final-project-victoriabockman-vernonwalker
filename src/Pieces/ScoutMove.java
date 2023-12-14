@@ -31,16 +31,11 @@ public class ScoutMove implements MoveStrategy{
         // Add all legal moves moving left
         while(x_left != -1){
             // if we check x_left, y for an enemy or ally here we can change the current rules
-            if(x_left == 7 && y == 4){
+            if(board.boardSquares[x_left][y].getColor() == 0){
                 break;
             }
-            else if(x_left == 7 && y == 5){
-                break;
-            }
-            else if(x_left == 3 && y == 4){
-                break;
-            }
-            else if(x_left == 3 && y == 5){
+            if(board.boardSquares[x_left][y].occupyingPiece != null){
+                list.add(new Point(x_left, y));
                 break;
             }
             else{
@@ -53,16 +48,11 @@ public class ScoutMove implements MoveStrategy{
         // Add all legal moves moving right
         while(x_right != 10){
             // if we check x_right, y for an enemy or ally here we can change the current rules
-            if(x_right == 2 && y == 4){
+            if(board.boardSquares[x_right][y].getColor() == 0){
                 break;
             }
-            else if(x_right == 2 && y == 5){
-                break;
-            }
-            else if(x_right == 6 && y == 4){
-                break;
-            }
-            else if(x_right == 6 && y == 5){
+            if(board.boardSquares[x_right][y].occupyingPiece != null){
+                list.add(new Point(x_right, y));
                 break;
             }
             else{
@@ -75,16 +65,11 @@ public class ScoutMove implements MoveStrategy{
         // Add all legal moves moving up
         while(y_up != -1){
             // if we check x, y_up for an enemy or ally here we can change the current rules
-            if(y_up == 5 && x == 2){
+            if(board.boardSquares[x][y_up].getColor() == 0){
                 break;
             }
-            else if(y_up == 5 && x == 3){
-                break;
-            }
-            else if(y_up == 5 && x == 6){
-                break;
-            }
-            else if(y_up == 5 && x == 7){
+            if(board.boardSquares[x][y_up].occupyingPiece != null){
+                list.add(new Point(x, y_up));
                 break;
             }
             else{
@@ -97,16 +82,11 @@ public class ScoutMove implements MoveStrategy{
         // Add all legal moves moving down
         while(y_down != 10){
             // if we check x, y_down for an enemy or ally here we can change the current rules
-            if(y_down == 4 && x == 2){
+            if(board.boardSquares[x][y_down].getColor() == 0){
                 break;
             }
-            else if(y_down == 4 && x == 3){
-                break;
-            }
-            else if(y_down == 4 && x == 6){
-                break;
-            }
-            else if(y_down == 4 && x == 7){
+            if(board.boardSquares[x][y_down].occupyingPiece != null){
+                list.add(new Point(x, y_down));
                 break;
             }
             else{
@@ -121,7 +101,12 @@ public class ScoutMove implements MoveStrategy{
             int x_coor = (int) point.getX();
             int y_coor = (int) point.getY();
 
-            if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
+            if(board.boardSquares[x_coor][y_coor].occupyingPiece != null){
+                if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
+                    list.remove(point);
+                }
+            }
+            if(board.boardSquares[x_coor][y_coor].getColor() == 0){
                 list.remove(point);
             }
         }

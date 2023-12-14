@@ -30,114 +30,6 @@ public class NormalMove implements MoveStrategy{
 
         // ADD the four possible moves to the list, if they exist within bounds
 
-        // Lake 1:
-
-        // left side
-        if(x == 1){
-            if(y == 4){
-                x_right = -1;
-            }
-            else if(y == 5){
-                x_right = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-
-        // right side
-        if(x == 4){
-            if(y == 4){
-                x_left = -1;
-            }
-            else if(y == 5){
-                x_left = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-        
-        // above
-        if(y == 3){
-            if(x == 2){
-                y_down = -1;
-            }
-            else if(x == 3){
-                y_down = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-        
-        // below
-        if(y == 6){
-            if(x == 2){
-                y_up = -1;
-            }
-            else if(x == 3){
-                y_up = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-
-        // Lake 2:
-
-        // left side
-        if(x == 5){
-            if(y == 4){
-                x_right = -1;
-            }
-            else if(y == 5){
-                x_right = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-
-        // right side
-        if(x == 8){
-            if(y == 4){
-                x_left = -1;
-            }
-            else if(y == 5){
-                x_left = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-        
-        // above
-        if(y == 3){
-            if(x == 6){
-                y_down = -1;
-            }
-            else if(x == 7){
-                y_down = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-        
-        // below
-        if(y == 6){
-            if(x == 6){
-                y_up = -1;
-            }
-            else if(x == 7){
-                y_up = -1;
-            }
-            else{
-                // do nothing
-            }
-        }
-
 
         if(x_left != -1){
             list.add(new Point(x_left, y));
@@ -167,6 +59,9 @@ public class NormalMove implements MoveStrategy{
                 if(board.boardSquares[x_coor][y_coor].occupyingPiece.color == strategoPiece.color){
                     list.remove(point);
                 }
+            }
+            if(board.boardSquares[x_coor][y_coor].getColor() == 0){
+                list.remove(point);
             }
         }
         
