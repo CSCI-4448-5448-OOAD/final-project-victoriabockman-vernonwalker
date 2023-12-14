@@ -14,10 +14,6 @@ import java.awt.Point;
 import javax.imageio.ImageIO;
 
 import Pieces.StrategoPiece;
-import Pieces.MoveStrategy;
-import Pieces.NoMove;
-import Pieces.NormalMove;
-import Pieces.ScoutMove;
 
 public class StrategoPanel extends JPanel implements MouseListener, MouseMotionListener{
 
@@ -30,8 +26,11 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     private int currY;
     private int currX;
     private String color;
+    private Square start;
+    private Controller controller;
 
     public StrategoPanel(String c) {
+        this.controller = null;
         this.color = c;
         this.pieces = new ArrayList<StrategoPiece>();
         this.setPreferredSize(this.getPreferredSize());
@@ -43,8 +42,8 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         setLayout(new GridLayout(10,10,0,0));
         this.squareSize = this.getHeight() / BOARD_SIZE;
 
-        for(int i = 0; i < BOARD_SIZE; i++){
-            for(int j = 0; j < BOARD_SIZE; j++){
+        for(int j = 0; j < BOARD_SIZE; j++){
+            for(int i = 0; i < BOARD_SIZE; i++){
                 if((i==2 || i==3 || i==6 || i==7) && (j==4 || j==5)){
                     boardSquares[i][j] = new Square(i, j, 0, this, this.squareSize);
                     this.add(boardSquares[i][j]);
@@ -79,13 +78,15 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         System.out.println(s.xNum + " " + s.yNum);
 
         if(s.getPiece() == null){
-            currPiece = null;
+            this.currPiece = null;
             return;
         }
 
-        currPiece = s.getPiece();
+        this.currPiece = s.getPiece();
 
-        if(currPiece.color != this.color){
+        System.out.println(this.currPiece);
+
+        if(this.currPiece.color != this.color){
             return;
         }
 
@@ -96,12 +97,33 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
     @Override
     public void mouseReleased(MouseEvent e){
+
         System.out.println("Mouse released function activated");
+
         Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
 
         System.out.println(sq.xNum + " " + sq.yNum);
+        System.out.println(this.currPiece);
 
+        this.controller = new MoveControl();
 
+        if(this.currPiece != null){
+            
+            this.controller.update(this.start, this.currPiece, sq, this);
+
+        }
+        else{
+            System.out.println("This piece is null!");
+            return;
+        }
+
+        this.controller = null;
+
+        this.currPiece = null;
+        this.currX = e.getX();
+        this.currY = e.getY();
+
+        repaint();
 
     }
 
@@ -183,7 +205,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     }
 
     public void paintComponent(Graphics g) {
-        // super.paintComponent(g);
+        super.paintComponent(g);
 
         for(int i = 0; i < BOARD_SIZE; i++){
             for(int j = 0; j < BOARD_SIZE; j++){

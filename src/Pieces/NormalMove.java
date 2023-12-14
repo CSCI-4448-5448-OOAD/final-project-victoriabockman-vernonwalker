@@ -4,15 +4,18 @@ package Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import ooad.StrategoPanel;
 
 public class NormalMove implements MoveStrategy{
+
+    private static final Object lock = new Object();
     
     @Override
     public List<Point> legalMoves(StrategoPiece strategoPiece, StrategoPanel board){
 
-        List<Point> list = new ArrayList<>();
+        List<Point> list = new CopyOnWriteArrayList<>();
 
         int x = strategoPiece.x;
         int y = strategoPiece.y;
@@ -155,14 +158,14 @@ public class NormalMove implements MoveStrategy{
         
 
         // remove collision with ally piece
+        
         for (Point point : list) {
-            int x_coor = (int) point.getX();
-            int y_coor = (int) point.getY();
 
             if(board.boardSquares[x][y].occupyingPiece.color == strategoPiece.color){
                 list.remove(point);
             }
         }
+        
 
         return list;
 
