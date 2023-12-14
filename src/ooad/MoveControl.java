@@ -11,7 +11,19 @@ import Pieces.StrategoPiece;
 
 public class MoveControl implements Controller{
 
+    // Red player is 1
+    // Blue player is 2
+
+    // Red starts first
+
     public void update(Square start, StrategoPiece attacker, Square end, StrategoPanel panel){
+
+        if(panel.curr_player == 1 && attacker.color == "Blue"){
+            return;
+        }
+        if(panel.curr_player == 2 && attacker.color == "Red"){
+            return;
+        }
 
         List<Point> legalMoves = attacker.moveStrategy.legalMoves(attacker, panel);
 
@@ -39,10 +51,13 @@ public class MoveControl implements Controller{
             attacker.y = end.yNum;
             start.occupyingPiece = null;
             end.occupyingPiece = attacker;
+            panel.curr_player = 3 - panel.curr_player;
             return;
         }
 
         MoveStrategy.attack(attacker, end.occupyingPiece, panel);
+
+        panel.curr_player = 3 - panel.curr_player;
 
         return;
         

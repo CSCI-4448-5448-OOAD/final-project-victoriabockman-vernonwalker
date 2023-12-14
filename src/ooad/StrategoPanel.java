@@ -28,6 +28,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     private int currY;
     private int currX;
     private String color;
+    public int curr_player;
     private Square start;
     private Controller controller;
     private PresetBoards presets;
@@ -36,6 +37,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.presets = new PresetBoards();
         this.controller = null;
         this.color = c;
+        this.curr_player = 1;
         this.pieces = new ArrayList<StrategoPiece>();
         this.setPreferredSize(this.getPreferredSize());
         this.setMaximumSize(this.getPreferredSize());
