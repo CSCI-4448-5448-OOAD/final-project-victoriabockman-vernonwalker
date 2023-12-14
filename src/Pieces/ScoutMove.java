@@ -4,6 +4,7 @@ package Pieces;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import ooad.StrategoPanel;
 
@@ -17,7 +18,7 @@ public class ScoutMove implements MoveStrategy{
         // This implementation allows for the jumping over of pieces at the moment
         // It currently only works to ensure no lake jumping or going out of bounds for legal moves
 
-        List<Point> list = new ArrayList<>();
+        List<Point> list = new CopyOnWriteArrayList<>();
         
         int x = strategoPiece.x;
         int y = strategoPiece.y;
