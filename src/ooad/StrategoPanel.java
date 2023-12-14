@@ -27,8 +27,8 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     private StrategoPiece currPiece;
     private int currY;
     private int currX;
-    private String color;
     public int curr_player;
+    private String color;
     private Square start;
     private Controller controller;
     private PresetBoards presets;
@@ -70,11 +70,12 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
-        //this.addMouseListener(this);
-        //this.addMouseMotionListener(this);
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 
-    public void mousePressedCaller(MouseEvent e){
+    @Override
+    public void mousePressed(MouseEvent e){
         System.out.println("Mouse pressed function activated");
         currX = e.getX();
         currY = e.getY();
@@ -102,7 +103,8 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
     }
 
-    public void mouseReleasedCaller(MouseEvent e){
+    @Override
+    public void mouseReleased(MouseEvent e){
 
         System.out.println("Mouse released function activated");
 
@@ -392,17 +394,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
-        //this.addMouseListener(this);
-        //this.addMouseMotionListener(this);
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // do nothing
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // do nothing
+        this.addMouseListener(this);
+        this.addMouseMotionListener(this);
     }
 }

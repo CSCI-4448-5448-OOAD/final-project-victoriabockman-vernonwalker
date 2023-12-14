@@ -11,11 +11,6 @@ import Pieces.StrategoPiece;
 
 public class MoveControl implements Controller{
 
-    // Red player is 1
-    // Blue player is 2
-
-    // Red starts first
-
     public void update(Square start, StrategoPiece attacker, Square end, StrategoPanel panel){
 
         if(panel.curr_player == 1 && attacker.color == "Blue"){
