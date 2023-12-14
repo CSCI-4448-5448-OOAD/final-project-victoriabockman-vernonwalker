@@ -28,8 +28,10 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     private String color;
     private Square start;
     private Controller controller;
+    private PresetBoards presets;
 
     public StrategoPanel(String c) {
+        this.presets = new PresetBoards();
         this.controller = null;
         this.color = c;
         this.pieces = new ArrayList<StrategoPiece>();
@@ -62,7 +64,8 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
             }
         }
 
-        initializeBoard();
+        presets.Deboer1("Red", this);
+        presets.Deboer2("Blue", this);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
