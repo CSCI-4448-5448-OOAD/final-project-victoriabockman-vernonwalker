@@ -9,10 +9,14 @@ import java.awt.Point;
 import Pieces.MoveStrategy;
 import Pieces.StrategoPiece;
 
+// interacts with both the model and view in order to move piece around upon user input
+
 public class MoveControl implements Controller{
 
+    // update is called when user tries to move something from the view
     public void update(Square start, StrategoPiece attacker, Square end, StrategoPanel panel){
 
+        // only allow the player to move their own pieces. 
         if(panel.curr_player == 1 && attacker.color == "Blue"){
             return;
         }
@@ -20,6 +24,7 @@ public class MoveControl implements Controller{
             return;
         }
 
+        // interacts with the move strategy in order to find which moves are legal
         List<Point> legalMoves = attacker.moveStrategy.legalMoves(attacker, panel);
 
         boolean isLegal = false;
@@ -37,10 +42,12 @@ public class MoveControl implements Controller{
             }
         }
 
+        // only allow the move if it is legal
         if(!isLegal){
             return;
         }
 
+        // move the piece
         if(end.occupyingPiece == null){
             attacker.x = end.xNum;
             attacker.y = end.yNum;
@@ -50,6 +57,7 @@ public class MoveControl implements Controller{
             return;
         }
 
+        // if there is another piece, try and attack it. 
         MoveStrategy.attack(attacker, end.occupyingPiece, panel);
 
         panel.curr_player = 3 - panel.curr_player;
@@ -57,6 +65,7 @@ public class MoveControl implements Controller{
         return;
         
     }
+
 
     public void update(){
         // do nothing

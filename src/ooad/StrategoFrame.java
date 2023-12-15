@@ -10,11 +10,15 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class StrategoFrame extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
+public class StrategoFrame extends JFrame implements ActionListener {
 
+    // exit button
     private JButton exit;
+    // reset button
     private JButton reset;
+    // the board panel
     private StrategoPanel panel;
+    // interface with the controller (command pattern)
     private Controller control;
 
     StrategoFrame(StrategoPanel p, String str){
@@ -31,9 +35,9 @@ public class StrategoFrame extends JFrame implements ActionListener, MouseListen
 
         this.setTitle(str);
 
-        this.addMouseListener(this);
     }
 
+    // call on the appropriate control based on the action performed
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -49,42 +53,6 @@ public class StrategoFrame extends JFrame implements ActionListener, MouseListen
         }
 
     }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        // do nothing
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        // do nothing
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // do nothing
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        panel.mousePressedCaller(e);
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        panel.mouseReleasedCaller(e);
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // do nothing
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // do nothing
-    }
-
     
     
 }

@@ -9,8 +9,12 @@ public class RestartControl implements Controller {
      // do nothing
     }
 
+    // intermediary method for interaction between the viewer and the model
+    // part of the Controller interface.
+    
     @Override
     public void update(StrategoPanel p) {
+
         p.reset();
     }
 

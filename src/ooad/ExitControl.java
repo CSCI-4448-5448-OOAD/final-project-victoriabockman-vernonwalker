@@ -9,6 +9,7 @@ public class ExitControl implements Controller {
         // do nothing
     }
 
+    // just exits the program
     public void update(){
         System.out.println("Exitting Program...");
         System.exit(0);

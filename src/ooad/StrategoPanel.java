@@ -19,20 +19,36 @@ import Pieces.StrategoPiece;
 
 public class StrategoPanel extends JPanel implements MouseListener, MouseMotionListener{
 
+
+    // constant size for board size
     public static final int BOARD_SIZE = 10;
     
+    // pieces data structure
     public ArrayList<StrategoPiece> pieces;
+
+    // the data structure for the individual board squares
     public Square[][] boardSquares;
+    
+    // constant for the individual size for each square
     private int squareSize;
+    // helper variable for storing the piece currently being moved by the mouse
     private StrategoPiece currPiece;
+    // x position of latest mouse interation
     private int currY;
+    // y pos of latest mouse interaction
     private int currX;
+    // current player
     public int curr_player;
+    // this players color
     private String color;
+    // helper variable for the starting square of a piece movement
     private Square start;
+    // how this object interacts with the controller of the model view controller
     private Controller controller;
+    // board presets which can be changed at runtime
     private PresetBoards presets;
 
+    // constructor which sets up mouse listeners, sqaures and all the pieces
     public StrategoPanel(String c) {
         this.presets = new PresetBoards();
         this.controller = null;
@@ -45,11 +61,15 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         this.setSize(this.getPreferredSize());
         // setBorder(BorderFactory.createLineBorder(Color.black));
         boardSquares = new Square[BOARD_SIZE][BOARD_SIZE];
+        // layout for making a grid and interacting easier with mouse listener
         setLayout(new GridLayout(10,10,0,0));
+        // square size is dependent on the size of this panel
         this.squareSize = this.getHeight() / BOARD_SIZE;
 
+        // placing all the squares and adding them to the layout
         for(int j = 0; j < BOARD_SIZE; j++){
             for(int i = 0; i < BOARD_SIZE; i++){
+                // place lake tiles
                 if((i==2 || i==3 || i==6 || i==7) && (j==4 || j==5)){
                     boardSquares[i][j] = new Square(i, j, 0, this, this.squareSize);
                     this.add(boardSquares[i][j]);
@@ -57,6 +77,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
                                                  j * this.getHeight() / StrategoPanel.BOARD_SIZE, 
                                                  this.squareSize, this.squareSize);
                 }
+                // place all other tiles
                 else{
                     boardSquares[i][j] = new Square(i, j, 1, this, this.squareSize);
                     this.add(boardSquares[i][j]);
@@ -67,13 +88,15 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
                 }
             }
         }
-
+        // instantiate some presets for the board
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
+        // listen
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
 
+    // where the mouse is clicked is the piece that we want to move, keep it stored in memory
     @Override
     public void mousePressed(MouseEvent e){
         System.out.println("Mouse pressed function activated");
@@ -103,6 +126,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
     }
 
+    // where you want the piece to move to
     @Override
     public void mouseReleased(MouseEvent e){
 
@@ -175,6 +199,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     //     }    
     // }
 
+    // unused method used in testing
     private void initializeBoard() {
         // Load board and piece images
        // BufferedImage boardImage = loadImage("C:\\\\Users\\bockm\\Pictures\\Stratego\\board.png");
@@ -208,11 +233,13 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         pieces.add(PieceFactory.createPiece(rank, x, y, c, this.boardSquares[x][y]));
     }
 
+    // just returns the actual size of the panel
     public Dimension getPreferredSize() {
         // Size of board
         return new Dimension(1000, 1000);
     }
 
+    // render the components and the panel all in one shot
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -264,6 +291,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
 
 
 
+    // load the images
     BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(new File(path));
@@ -273,6 +301,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         }
     }
 
+    // draw the pieces using the given image
     public void drawPiece(Graphics g, StrategoPiece piece){
 
         Image piece_image = getPieceImage(piece);
@@ -285,9 +314,12 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
     }
 
 
+    // get the image itself
     private Image getPieceImage(StrategoPiece piece){
         String col = "";
         String end = "";
+
+        // if and switch statement for getting the image file name
 
         if(piece.color == "Red"){
             col = "RED_";
@@ -357,6 +389,7 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
         return image;
     }
 
+    // method for resetting all the data structures on the board. 
     public void reset(){
         this.presets = null;
         this.presets = new PresetBoards();
@@ -392,9 +425,11 @@ public class StrategoPanel extends JPanel implements MouseListener, MouseMotionL
             }
         }
 
+        // replacing pieces. 
         presets.Deboer1("Red", this);
         presets.Deboer2("Blue", this);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
+
 }

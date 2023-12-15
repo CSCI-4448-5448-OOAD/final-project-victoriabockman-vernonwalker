@@ -6,6 +6,7 @@ package ooad;
 import Pieces.StrategoPiece;
 
 public interface Controller {
+    // interface for the controller/command pattern
     
     public void update(Square s, StrategoPiece a, Square e, StrategoPanel p);
     public void update();

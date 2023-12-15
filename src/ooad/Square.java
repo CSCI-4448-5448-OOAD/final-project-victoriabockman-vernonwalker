@@ -14,15 +14,19 @@ import javax.swing.JComponent;
 import Pieces.StrategoPiece;
 
 public class Square extends JComponent{
+    // stores which square this is using coordinates
     public int xNum;
     public int yNum;
     private StrategoPanel pan;
+    // the piece currently in this square
     public StrategoPiece occupyingPiece;
+    // constant for the size of this component when rendered
     private int squareSize;
     // private int xPos;
     // private int yPos;
     // private int size;
 
+    // the color of this square
     private final int color;
 
     public Square(int x, int y, int c, StrategoPanel p, int sq){
@@ -35,6 +39,7 @@ public class Square extends JComponent{
         this.setSize(sq, sq);
     }
 
+    // how to render this object
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
@@ -52,7 +57,7 @@ public class Square extends JComponent{
         g.drawRect(this.xNum * squareSize, 
             this.yNum * squareSize, squareSize, squareSize);
 
-
+        // draw the occupying piece if this has one
         if(this.occupyingPiece != null){
             this.drawPiece(g, this.getPiece());
         }
@@ -63,10 +68,12 @@ public class Square extends JComponent{
         
     }
 
+    // getter
     public StrategoPiece getPiece(){
         return this.occupyingPiece;
     }
 
+    // setter
     public void setPiece(StrategoPiece p){
         this.occupyingPiece = p;
     }
@@ -74,6 +81,7 @@ public class Square extends JComponent{
 
 
 
+    // load the image of the appropriate piece
     BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(new File(path));
@@ -83,6 +91,7 @@ public class Square extends JComponent{
         }
     }
 
+    // draw the piece
     public void drawPiece(Graphics g, StrategoPiece piece){
 
         Image piece_image = getPieceImage(piece);
@@ -95,6 +104,7 @@ public class Square extends JComponent{
     }
 
 
+    // get the piece image from the file name
     private Image getPieceImage(StrategoPiece piece){
         String col = "";
         String end = "";
